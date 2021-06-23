@@ -6,7 +6,7 @@ from django.views.generic import CreateView
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import DeleteView
+from django.views.generic.edit import DeleteView, UpdateView
 
 from accountapp.decorators import account_ownership_required
 from accountapp.forms import *
@@ -31,11 +31,11 @@ class AccountDetailView(DetailView):
 
 @method_decorator(has_ownership, 'get')
 @method_decorator(has_ownership, 'post')
-class AccountUpdateView(CreateView):
+class AccountUpdateView(UpdateView):
     model = User
     context_object_name = 'target_user'
     form_class = AccountUpdateForm
-    success_url = reverse_lazy('accountapp:login')
+    success_url = reverse_lazy('home')
     template_name = 'accountapp/update.html'
 
 
