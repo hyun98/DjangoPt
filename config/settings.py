@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'main',
     'accountapp',
     'profileapp',
+    'articleapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
