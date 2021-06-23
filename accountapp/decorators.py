@@ -13,8 +13,13 @@ def account_ownership_required(func):
     
     
 =======
-            return HttpResponseForbidden()
+            return HttpResponseForbidden()a
+asfdasdfasfd
         return func(request, *args, **kwargs)
+
+dfkdsfjaslkdf
+
+asfdasdfasf
 
 >>>>>>> 0336da6090023bfd94adec0375bcf27d0ec82c3f
     return decorated
