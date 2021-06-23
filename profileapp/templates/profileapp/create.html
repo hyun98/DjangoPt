@@ -3,8 +3,8 @@
 {% block content %}
 
 <div style="text-align: center;">
-    <h4>User Create</h4>
-    <form action="{% url 'accountapp:create' %}" method="POST">
+    <h4>Profile Create</h4>
+    <form action="{% url 'profileapp:create' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
         <input type="submit" class="btn btn-primary">
