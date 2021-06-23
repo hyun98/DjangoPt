@@ -139,9 +139,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/hello/'
 LOGOUT_REDIRECT_URL = 'accountapp:login'
 
-# localhost:8000/media/test.jpg
-# 위와같은 url을 통해서 test.jpg에 접근 가능
+# 주소창에 localhost:8000/media/test.jpg 같이 누르면 test.jpg를 가져올 수 있다.
 MEDIA_URL = '/media/'
 
-# media 파일을 저장하는 기본 위치
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
