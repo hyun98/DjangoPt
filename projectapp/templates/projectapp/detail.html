@@ -12,11 +12,17 @@
         </p>
         <hr>
     </div>
-
+    <div style="text-align: center; margin: 4rem 0 4rem auto;">
+        {% if user.is_authenticated %}
+            {% if not subscription %}
+            <a href="{% url 'subscribeapp:subscribe' %}?project_pk={{ target_project.pk }}">구독하기</a>
+            {% else %}
+            <a href="{% url 'subscribeapp:subscribe' %}?project_pk={{ target_project.pk }}">구독취소</a>
+            {% endif %}
+        {% endif %}
+    </div>
     <div>
-
         {% include 'snippets/list_pinter.html' with article_list=object_list %}
-
     </div>
 
 </div>
