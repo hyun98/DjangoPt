@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'profileapp',
     'articleapp',
     'commentapp',
+    'projectapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
