@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import *
 
+from articleapp.models import Article
 from projectapp.models import Project
 from subscribeapp.models import Subscription
 
@@ -29,3 +30,18 @@ class SubscriptionView(RedirectView):
             subscription = Subscription(user=user, project=project).save()
 
         return super(SubscriptionView, self).get(request, *args, **kwargs)
+
+
+@method_decorator(login_required, 'get')
+class SubscriptionListView(ListView):
+    model = Article
+    context_object_name = 'article_list'
+    template_name = 'subscribeapp/list.html'
+
+    paginate_by = 5
+
+    def get_queryset(self):
+        # user가 구독한 Subscription 모델에서 project필드만 list형식으로 가져온다.
+        projects = Subscription.objects.filter(user=self.request.user).values_list('project')
+        article_list = Article.objects.filter(project__in=projects)
+        return article_list
