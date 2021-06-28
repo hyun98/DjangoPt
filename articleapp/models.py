@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
-
+from froala_editor.fields import FroalaField
 
 # Create your models here.
 from projectapp.models import Project
@@ -12,5 +12,7 @@ class Article(models.Model):
 
     title = models.CharField(max_length=200, null=True)
     image = models.ImageField(upload_to='article/', null=True)
-    content = models.TextField(null=True)
+    content = FroalaField(plugins=('font_size', 'font_family'), null=True, blank=True, options={
+        'toolbarInline': True,
+    })
     created_at = models.DateField(auto_now_add=True, null=True)

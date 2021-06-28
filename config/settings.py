@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import environ
+from django.urls import reverse_lazy
 
 env = environ.Env(
     # set casting, default value
@@ -41,13 +42,13 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'main',
     'accountapp',
     'profileapp',
     'articleapp',
     'commentapp',
     'projectapp',
     'subscribeapp',
+    'froala_editor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -141,11 +142,17 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/hello/'
-LOGOUT_REDIRECT_URL = 'accountapp:login'
+LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
 
 # 주소창에 localhost:8000/media/test.jpg 같이 누르면 test.jpg를 가져올 수 있다.
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+FROALA_EDITOR_PLUGINS = ('align', 'char_counter', 'code_beautifier' ,'code_view', 'colors', 'draggable', 'emoticons',
+        'entities', 'file', 'font_family', 'font_size', 'fullscreen', 'image_manager', 'image', 'inline_style',
+        'line_breaker', 'link', 'lists', 'paragraph_format', 'paragraph_style', 'quick_insert', 'quote', 'save', 'table',
+        'url', 'video')
+
+FRAOLA_EDITOR_THIRD_PARTY = ('image_aviary', 'spell_checker')
